@@ -8,7 +8,7 @@ RUN gcloud components install --quiet beta
 RUN gcloud components install --quiet alpha
 
 RUN apk add bash py3-pip && \
-    apk add --virtual=build gcc libffi-dev musl-dev openssl-dev python3-dev make
+    apk add --virtual=build gcc libffi-dev musl-dev openssl-dev python3-dev make strongswan
 
 RUN pip3 --no-cache-dir install -U pip && \
     pip3 --no-cache-dir install azure-cli  
