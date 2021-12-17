@@ -25,8 +25,3 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 RUN useradd -ms /bin/bash lernmi
 
 WORKDIR /home/lernmi
-
-COPY lernmi.p12 .
-COPY ipsec.conf .
-COPY ipsec.secrets .
-COPY VpnServerRoot.cer .
