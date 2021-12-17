@@ -4,17 +4,11 @@ USER root
 
 RUN apt-get update && apt-get install apt-transport-https ca-certificates gnupg curl python3 strongswan strongswan-pki libstrongswan-extra-plugins unzip libcharon-extra-plugins libcharon-standard-plugins libstrongswan-standard-plugins strongswan-charon strongswan-starter strongswan-scepclient strongswan-swanctl -y
 
-RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts --install-dir=/gcloud
-
-RUN chmod 755 -R /gcloud
-
 ENV PATH $PATH:/gcloud/google-cloud-sdk/bin
 
 RUN apt-get upgrade coreutils -y
 
-RUN gcloud components update --quiet --version=351.0.0
-RUN gcloud components install --quiet beta
-RUN gcloud components install --quiet alpha
+RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts --install-dir=/gcloud && chmod 755 -R /gcloud && gcloud components update --quiet --version=351.0.0 && gcloud components install --quiet beta && gcloud components install --quiet alpha
 
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
