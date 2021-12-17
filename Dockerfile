@@ -1,8 +1,8 @@
-FROM ubuntu:22.04
+FROM ubuntu:18.04
 
 USER root
 
-RUN apt-get update && apt-get install apt-transport-https ca-certificates gnupg curl python3 -y
+RUN apt-get update && apt-get install apt-transport-https ca-certificates gnupg curl python3 strongswan strongswan-pki libstrongswan-extra-plugins unzip libcharon-extra-plugins libcharon-standard-plugins libstrongswan-standard-plugins strongswan-charon strongswan-starter strongswan-scepclient strongswan-swanctl -y
 
 RUN curl https://sdk.cloud.google.com > install.sh && bash install.sh --disable-prompts --install-dir=/gcloud
 
@@ -24,6 +24,9 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 RUN useradd -ms /bin/bash lernmi
 
-USER lernmi
-
 WORKDIR /home/lernmi
+
+COPY lernmi.p12 .
+COPY ipsec.conf .
+COPY ipsec.secrets .
+COPY VpnServerRoot.cer .
