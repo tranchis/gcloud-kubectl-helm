@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 USER root
 
-RUN apt-get update && apt-get install apt-transport-https ca-certificates gnupg curl python3 strongswan strongswan-pki libstrongswan-extra-plugins unzip libcharon-extra-plugins libcharon-standard-plugins libstrongswan-standard-plugins strongswan-charon strongswan-starter strongswan-scepclient strongswan-swanctl -y
+RUN apt-get update && apt-get install apt-transport-https ca-certificates gnupg curl python3 strongswan strongswan-pki libstrongswan-extra-plugins unzip libcharon-extra-plugins libcharon-standard-plugins libstrongswan-standard-plugins strongswan-charon strongswan-starter strongswan-scepclient strongswan-swanctl -y docker.io
 
 ENV PATH $PATH:/gcloud/google-cloud-sdk/bin
 
